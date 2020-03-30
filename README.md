@@ -24,6 +24,33 @@ __Vue.js__（4系）を、`docker-compose`で環境構築
 
 ---
 
+## ディレクトリ構成
+
+```
+$ tree -L 2
+.
+├── README.md
+├── babel.config.js
+├── docker
+│   └── Dockerfile
+├── docker-compose.yml
+├── node_modules
+│   ├── ...
+│   └── ...
+├── package-lock.json
+├── package.json
+├── public
+│   ├── favicon.ico
+│   └── index.html
+└── src
+    ├── App.vue
+    ├── assets
+    ├── components
+    └── main.js
+```
+
+---
+
 # app
 
 ## Project setup
