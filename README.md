@@ -1,6 +1,6 @@
 # Vue.js Mock
 
-`__Vue.js__(4系)` を、`docker-compose`で環境構築
+__Vue.js__（4系）を、`docker-compose`で環境構築
 
 ```
 # vue --version
@@ -19,7 +19,7 @@
 |:--|:--|
 | Mac | |
 | Docker | 1.25.4 |
-| Docker-compose |　1.25.4　|
+| Docker-compose | 1.25.4 |
 
 
 ---
