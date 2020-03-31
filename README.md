@@ -1,6 +1,6 @@
 # Vue.js Mock
 
-* __Vue.js__（4系）開発環境を、`docker-compose`で構築
+* __Vue.js__（vue/cli 4系）開発環境を、`docker-compose`で構築
 
   <img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
 
@@ -145,7 +145,9 @@ found 0 vulnerabilities
 * コンテナから抜けて、コンテナ停止は以下
     ```
     /usr/src/app # exit
+    ```
 
+    ```
     $ docker-compose stop
     Stopping vue_trial_app_1 ... done
 
@@ -154,6 +156,14 @@ found 0 vulnerabilities
 * コンテナやイメージをまとめて全削除
     ```
     $ docker-compose down --rmi all --volumes
+    ```
+
+    ```
+    $ cd ../
+    ```
+
+    ```
+    $ rm -rf vue_trial/
     ```
 
 
