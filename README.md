@@ -18,7 +18,7 @@ __Vue.js__（4系）を、`docker-compose`で環境構築
 | | バージョン |
 |:--|:--|
 | Mac | |
-| Docker | 1.25.4 |
+| Docker | 19.03.8 |
 | Docker-compose | 1.25.4 |
 
 
