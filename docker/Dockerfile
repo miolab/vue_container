@@ -1,6 +1,6 @@
-FROM node:13.12.0-alpine
+FROM node:14.16.0-alpine
 
 WORKDIR /usr/src/app
 
 RUN apk update && \
-    npm install -g npm @vue/cli
+    npm install -g @vue/cli@4.5.11
