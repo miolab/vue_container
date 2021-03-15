@@ -127,7 +127,6 @@ found 0 vulnerabilities
 
   DONE  Compiled successfully in 14059ms
 
-
     App running at:
     - Local:   http://localhost:8080/ 
 
