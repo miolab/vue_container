@@ -1,92 +1,73 @@
 # Vue.js Mock
 
-* __Vue.js__（4系）開発環境を、`docker-compose`で構築
+* __Vue.js__（4系）開発環境を、`docker-compose`で構築。
 
   <img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
 
 * バージョン
 
-    ```
-    # vue --version
-    @vue/cli 4.2.3
+  ```sh
+  $ docker-compose exec app sh -c "node --version && vue --version"
 
-    # npm --version
-    6.14.4
-    ```
-
+  v14.16.0
+  @vue/cli 4.5.11
+  ```
 
 ## Usage
 
-* 以下、
-
-  * `$ ... `はTerminalでの操作
-
-  * `/usr/src/app # ... `はDockerコンテナ内での操作
-
-  です。
-
-* `/usr/src/app # vue create .` 実行時の設定は、各人お好みでどうぞ。
-
+* 以下コード中、
+  * `$ ... `はTerminalでの操作。
+  * `# ... `はDockerコンテナ内での操作。
+* `# vue create .` 実行時の設定は任意で。
 
 ### ビルド・起動
 
-```
-$ git clone https://github.com/miolab/vue_trial.git
-Cloning into 'vue_trial'...
-remote: Enumerating objects: 36, done.
-remote: Counting objects: 100% (36/36), done.
-remote: Compressing objects: 100% (28/28), done.
-remote: Total 36 (delta 7), reused 30 (delta 4), pack-reused 0
-Unpacking objects: 100% (36/36), 90.10 KiB | 339.00 KiB/s, done.
-```
+* ビルド
 
-```
-$ cd vue_trial/
-```
+  ```sh
+  $ git clone https://github.com/miolab/vue_trial.git
 
-```
-$ docker-compose build
-Building app
-Step 1/3 : FROM node:12.12.0-alpine
- ---> 0fcfd7e52b09
-Step 2/3 : WORKDIR /usr/src/app
- ---> Using cache
- ---> 0b80d4a4d6e4
-Step 3/3 : RUN apk update &&     npm install -g npm @vue/cli
- ---> Using cache
- ---> 26860c88aac8
-Successfully built 26860c88aac8
-Successfully tagged vue_trial_app:latest
-```
+  $ cd vue_trial
 
-```
-$ docker-compose up -d
-Creating vue_trial_app_1 ... done
-```
+  $ docker-compose build
+  ```
 
-```
-$ docker-compose exec app sh
-```
+* 起動
 
-```
-/usr/src/app # vue --version
-@vue/cli 4.2.3
-```
+  ```sh
+  $ docker-compose up -d
+  ```
 
-```
-/usr/src/app # vue create .
+  ```sh
+  $ docker-compose exec app sh
+  ```
+
+  * Vueが入ったか確認
+
+  ```
+  # vue --version
+  @vue/cli 4.5.11
+  ```
+
+### Vue開発環境構築（例）
+
+```sh
+# vue create .
+
+?  Your connection to the default yarn registry seems to be slow.
+   Use https://registry.npm.taobao.org for faster installation? No
 
 
-Vue CLI v4.2.3
+Vue CLI v4.5.11
 ? Generate project in current directory? Yes
 
 
-Vue CLI v4.2.3
-? Please pick a preset: default (babel, eslint)
+Vue CLI v4.5.11
+? Please pick a preset: Default ([Vue 2] babel, eslint)
 ? Pick the package manager to use when installing dependencies: NPM
 
 
-Vue CLI v4.2.3
+Vue CLI v4.5.11
 ✨  Creating project in /usr/src/app.
 ⚙️  Installing CLI plugins. This might take a while...
 
@@ -98,16 +79,16 @@ setting up Git hooks
 done
 
 
-> core-js@3.6.4 postinstall /usr/src/app/node_modules/core-js
+> core-js@3.9.1 postinstall /usr/src/app/node_modules/core-js
 > node -e "try{require('./postinstall')}catch(e){}"
 
 
 > ejs@2.7.4 postinstall /usr/src/app/node_modules/ejs
 > node ./postinstall.js
 
-added 1236 packages from 869 contributors and audited 25486 packages in 113.435s
+added 1258 packages from 947 contributors and audited 1261 packages in 154.604s
 
-42 packages are looking for funding
+69 packages are looking for funding
   run `npm fund` for details
 
 found 0 vulnerabilities
@@ -115,9 +96,9 @@ found 0 vulnerabilities
 🚀  Invoking generators...
 📦  Installing additional dependencies...
 
-audited 25486 packages in 25.49s
+added 53 packages from 36 contributors and audited 1314 packages in 30.346s
 
-42 packages are looking for funding
+74 packages are looking for funding
   run `npm fund` for details
 
 found 0 vulnerabilities
@@ -133,67 +114,55 @@ found 0 vulnerabilities
 
 ```
 
-```
-/usr/src/app # npm run serve
-```
+* サーバー起動（サンプル表示） `npm run serve`
 
-サーバーが立ち上がったら、[http://0.0.0.0:8080/](http://0.0.0.0:8080/)で確認します。
+  ```sh
+  $ docker-compose exec app npm run serve
+
+  > app@0.1.0 serve /usr/src/app
+  > vue-cli-service serve
+
+  INFO  Starting development server...
+  98% after emitting CopyPlugin
+
+  DONE  Compiled successfully in 14059ms
 
 
-### 停止
+    App running at:
+    - Local:   http://localhost:8080/ 
 
-* コンテナから抜けて、コンテナ停止は以下
-    ```
-    /usr/src/app # exit
+    It seems you are running Vue CLI inside a container.
+    Access the dev server via http://localhost:<your container's external mapped port>/
 
-    $ docker-compose stop
-    Stopping vue_trial_app_1 ... done
+    Note that the development build is not optimized.
+    To create a production build, run npm run build.
+  ```
 
-    ```
+  サーバーが立ち上がったら、[http://0.0.0.0:8080/](http://0.0.0.0:8080/)で確認。
+
+---
+
+### アプデ等で環境がおかしくなったら
+
+* `$ docker-compose run --rm app npm rebuild` 試す。
+
+### 削除する場合
+
+* コンテナ停止は以下
+
+  ```
+  # exit
+  ```
+
+  ```
+  $ docker-compose stop
+  ```
 
 * コンテナやイメージをまとめて全削除
-    ```
-    $ docker-compose down --rmi all --volumes
-    ```
 
-
----
-
-## 実行環境
-
-| | バージョン |
-|:--|:--|
-| Mac | |
-| Docker | 19.03.8 |
-| Docker-compose | 1.25.4 |
-
-
----
-
-## ディレクトリ構成
-
-```
-$ tree -L 2
-.
-├── README.md
-├── babel.config.js
-├── docker
-│   └── Dockerfile
-├── docker-compose.yml
-├── node_modules
-│   ├── ...
-│   └── ...
-├── package-lock.json
-├── package.json
-├── public
-│   ├── favicon.ico
-│   └── index.html
-└── src
-    ├── App.vue
-    ├── assets
-    ├── components
-    └── main.js
-```
+  ```
+  $ docker-compose down --rmi all --volumes
+  ```
 
 ---
 
