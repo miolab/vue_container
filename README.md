@@ -127,8 +127,9 @@ found 0 vulnerabilities
 
   DONE  Compiled successfully in 14059ms
 
+
     App running at:
-    - Local:   http://localhost:8080/ 
+    - Local:   http://localhost:8080/
 
     It seems you are running Vue CLI inside a container.
     Access the dev server via http://localhost:<your container's external mapped port>/
