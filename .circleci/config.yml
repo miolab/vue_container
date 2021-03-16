@@ -1,0 +1,37 @@
+version: 2.1
+
+executors:
+  machine-executor:
+    machine:
+      image: ubuntu-1604:202010-01
+
+jobs:
+  build:
+    executor:
+      name: machine-executor
+    steps:
+      - checkout
+      - run:
+          name: Build Docker containers
+          command: |
+            set -x
+            docker-compose build
+            docker-compose run --rm app sh -c "node --version && vue --version"
+      - run:
+          name: Run Docker containers (include show logs)
+          command: |
+            set -x
+            docker-compose up -d
+            sleep 1
+            docker ps -f status=running
+            docker-compose logs
+      - run:
+          name: Run Vue server
+          command: |
+            set -x
+            docker-compose exec app bash -c "npm run serve"
+      - run:
+          name: Finish build pipeline
+          command: |
+            set -x
+            echo "Finished build pipeline."
