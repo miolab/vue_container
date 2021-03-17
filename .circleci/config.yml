@@ -18,6 +18,11 @@ jobs:
             docker-compose build
             docker-compose run --rm app sh -c "node --version && vue --version"
       - run:
+          name: Npm install
+          command: |
+            set -x
+            docker-compose run --rm app npm i
+      - run:
           name: Run Docker containers (include show logs)
           command: |
             set -x
