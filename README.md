@@ -1,6 +1,6 @@
 # Vue.js Mock
 
-[![miolab](https://circleci.com/gh/miolab/vue_trial.svg?style=svg)](https://github.com/miolab/vue_trial)
+[![miolab](https://circleci.com/gh/miolab/vue_container.svg?style=svg)](https://github.com/miolab/vue_container)
 
 * __Vue.js__（4系）開発環境を、`docker-compose`で構築。
 
@@ -27,9 +27,9 @@
 * ビルド
 
   ```sh
-  $ git clone https://github.com/miolab/vue_trial.git
+  $ git clone https://github.com/miolab/vue_container.git
 
-  $ cd vue_trial
+  $ cd vue_container
 
   $ docker-compose build
   ```
