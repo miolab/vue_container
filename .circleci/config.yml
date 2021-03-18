@@ -30,11 +30,11 @@ jobs:
             sleep 1
             docker ps -f status=running
             docker-compose logs
-      - run:
-          name: Run Vue server
-          command: |
-            set -x
-            docker-compose exec app sh -c "npm run serve"
+      # - run:
+      #     name: Run Vue server
+      #     command: |
+      #       set -x
+      #       docker-compose exec app sh -c "npm run serve"
       - run:
           name: Finish build pipeline
           command: |
