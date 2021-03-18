@@ -2,25 +2,27 @@
 
 [![miolab](https://circleci.com/gh/miolab/vue_container.svg?style=svg)](https://github.com/miolab/vue_container)
 
-* __Vue.js__（4系）開発環境を、`docker-compose`で構築。
+__Vue.js__ のDocker開発環境リポジトリ
 
-  <img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
+<img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
 
 * バージョン
 
   ```sh
-  $ docker-compose exec app sh -c "node --version && vue --version"
+  $ docker-compose run --rm app npm list vue
+  `-- vue@2.6.12
 
+  $ docker-compose exec app sh -c "node --version && vue --version"
   v14.16.0
   @vue/cli 4.5.11
   ```
 
 ## Usage
 
-* 以下コード中、
-  * `$ ... `はTerminalでの操作。
-  * `# ... `はDockerコンテナ内での操作。
-* `# vue create .` 実行時の設定は任意で。
+以下コード中、
+* `$ ... `はTerminalでの操作
+* `# ... `はDockerコンテナ内での操作  
+を表す。
 
 ### ビルド・起動
 
@@ -168,6 +170,15 @@ found 0 vulnerabilities
 
 ---
 
+## Ref
+
+- v2 https://jp.vuejs.org/v2/guide/index.html
+- v3 https://v3.ja.vuejs.org/guide/introduction.html
+
+- https://qiita.com/Syoitu/items/4d2d51189440a69abbac
+- https://qiita.com/ryo2132/items/3d0379e85c38a9a5b355
+
+---
 # app
 
 ## Project setup
