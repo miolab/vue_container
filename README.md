@@ -1,5 +1,7 @@
 # Vue.js Mock
 
+[![miolab](https://circleci.com/gh/miolab/vue_trial.svg?style=svg)](https://github.com/miolab/vue_trial)
+
 * __Vue.js__（4系）開発環境を、`docker-compose`で構築。
 
   <img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
