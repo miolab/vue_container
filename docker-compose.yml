@@ -9,3 +9,5 @@ services:
       - .:/usr/src/app
     stdin_open: true
     tty: true
+    command:
+      sh -c "yarn serve"
