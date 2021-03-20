@@ -28,6 +28,8 @@ __Vue.js__ のDocker開発環境リポジトリ
 
 ### ビルド・起動
 
+## コンテナビルド
+
 * ビルド
 
   ```sh
@@ -55,7 +57,7 @@ __Vue.js__ のDocker開発環境リポジトリ
   @vue/cli 4.5.11
   ```
 
-### Vue開発環境構築（例）
+## Vue開発環境構築（例）
 
 ```sh
 # vue create .
@@ -115,7 +117,70 @@ Done in 1.76s.
 
   サーバーが立ち上がったら、[http://0.0.0.0:8080/](http://0.0.0.0:8080/)で確認。
 
+## テスト環境構築
+
+1.
+
+```sh
+$ docker-compose run --rm app yarn add --dev jest @vue/test-utils
+```
+
+`package.json`
+
+```json
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "test": "jest" // <- add
+  },
+```
+
+2.
+
+```sh
+$ docker-compose run --rm app yarn add --dev vue-jest
+```
+
+`package.json`
+
+```json
+  ...
+  "readme": "ERROR: No README data found!",
+  // add ->
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "vue"
+    ],
+    "transform": {
+      ".*\\.(vue)$": "vue-jest"
+    },
+    "moduleNameMapper": {
+      "^@/(.*)$": "<rootDir>/src/$1"
+    }
+  }
+```
+
+3.
+
+```sh
+$ docker-compose run --rm app yarn add --dev babel-jest
+```
+
+`package.json`
+
+```json
+    "transform": {
+      ".*\\.(vue)$": "vue-jest",
+      "^.+\\.js$": "<rootDir>/node_modules/babel-jest" // -> add
+    },
+```
+
 ---
+
+# 補記
 
 ### ~~アプデ等で環境がおかしくなったら~~
 
@@ -140,15 +205,27 @@ Done in 1.76s.
 
 ---
 
-## Ref
+## 参考
+
+#### 公式ガイド
 
 - v2 https://jp.vuejs.org/v2/guide/index.html
 - v3 https://v3.ja.vuejs.org/guide/introduction.html
+
+#### その他
 
 - https://qiita.com/Syoitu/items/4d2d51189440a69abbac
 - https://qiita.com/ryo2132/items/3d0379e85c38a9a5b355
 
 - https://qiita.com/fruitriin/items/3249bb24d60932bb42ee
+
+#### テスト環境まわり
+
+公式
+- https://vue-test-utils.vuejs.org/ja/installation/#%E3%83%86%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%E3%83%8A%E3%82%92%E9%81%B8%E3%81%B6
+
+その他
+- https://qiita.com/kskinaba/items/d23259060e6e13b7353c
 
 ---
 # app
