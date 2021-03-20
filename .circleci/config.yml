@@ -18,10 +18,10 @@ jobs:
             docker-compose build
             docker-compose run --rm app sh -c "node --version && vue --version"
       - run:
-          name: Npm install
+          name: Yarn install
           command: |
             set -x
-            docker-compose run --rm app npm i
+            docker-compose run --rm app yarn install
       - run:
           name: Run Docker containers (include show logs)
           command: |
@@ -30,11 +30,6 @@ jobs:
             sleep 1
             docker ps -f status=running
             docker-compose logs
-      # - run:
-      #     name: Run Vue server
-      #     command: |
-      #       set -x
-      #       docker-compose exec app sh -c "npm run serve"
       - run:
           name: Finish build pipeline
           command: |
