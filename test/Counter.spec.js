@@ -4,7 +4,7 @@ import Counter from '../src/Counter.vue'
 describe('init', () => {
   it('test greet', () => {
     const str = 'hello';
-    expect(str).toMatch('hollo');
+    expect(str).toMatch('hello');
   })
 })
 
