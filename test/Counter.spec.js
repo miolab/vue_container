@@ -8,10 +8,11 @@ describe('init', () => {
   })
 })
 
-// describe('Counter.vue', () => {
-//   it('counter test', () => {
-//     const wrapper = shallowMount(Counter);
-//     wrapper.find('button').trigger('click');
-//     expect(wrapper.find('p#js-count').text()).toMatch('1');
-//   })
-// })
+describe('Counter.vue', () => {
+  it('increments count when button is clicked', async () => {
+    const wrapper = shallowMount(Counter);
+    await wrapper.find('button').trigger('click');
+
+    await expect(wrapper.find('div').text()).toMatch('1');
+  })
+})
