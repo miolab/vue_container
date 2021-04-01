@@ -1,4 +1,3 @@
-
 <template>
   <div>
     {{ count }}
@@ -8,14 +7,12 @@
 
 <script>
 export default {
-  // name: 'Counter',
-
+  name: 'Counter',
   data() {
     return {
       count: 0
     }
   },
-
   methods: {
     increment() {
       this.count++
