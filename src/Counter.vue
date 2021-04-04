@@ -1,7 +1,7 @@
 <template>
   <div>
-    {{ count }}
-    <button @click="increment">Increment</button>
+    <p>{{ count }}</p>
+    <button @click="increment">oshitara-kazuga-fuemasu</button>
   </div>
 </template>
 
