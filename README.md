@@ -1,8 +1,8 @@
-# Vue.js Mock
+# Vue.js v2 Dev Container
 
 [![miolab](https://circleci.com/gh/miolab/vue_container.svg?style=svg)](https://github.com/miolab/vue_container)
 
-__Vue.js__ のDocker開発環境リポジトリ
+__Vue.js__ (v2) のDocker開発環境リポジトリ
 
 <img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
 
@@ -52,10 +52,10 @@ __Vue.js__ のDocker開発環境リポジトリ
 
   * Vueが入ったか確認
 
-  ```
-  # vue --version
-  @vue/cli 4.5.11
-  ```
+    ```
+    # vue --version
+    @vue/cli 4.5.11
+    ```
 
 ## Vue開発環境構築（例）
 
@@ -119,68 +119,107 @@ Done in 1.76s.
 
 ## テスト環境構築
 
-1.
+#### まとめて準備する場合
+
+  ```sh
+  $ docker-compose run --rm app sh -c "yarn add --dev jest @vue/test-utils vue-jest   babel-jest @babel-core @babel/preset-env babel-core@bridge jsdom jsdom-global"
+  ```
+
+#### 個別で準備する場合
+
+- 1.
+
+  ```sh
+  $ docker-compose run --rm app yarn add --dev jest @vue/test-utils
+  ```
+
+  - `package.json` 編集
+
+    ```json
+      "scripts": {
+        "serve": "vue-cli-service serve",
+        "build": "vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "test": "jest" // <- add
+      },
+    ```
+
+- 2.
+
+  ```sh
+  $ docker-compose run --rm app yarn add --dev vue-jest
+  ```
+
+  - `package.json` 編集
+
+    ```json
+      ...
+      "readme": "ERROR: No README data found!",
+      // add ->
+      "jest": {
+        "moduleFileExtensions": [
+          "js",
+          "json",
+          "vue"
+        ],
+        "transform": {
+          ".*\\.(vue)$": "vue-jest"
+        },
+        "moduleNameMapper": {
+          "^@/(.*)$": "<rootDir>/src/$1"
+        }
+      }
+    ```
+
+- 3.
+
+  ```sh
+  $ docker-compose run --rm app yarn add --dev babel-jest
+  ```
+
+  - `package.json` 編集
+
+    ```json
+        "transform": {
+          ".*\\.(vue)$": "vue-jest",
+          "^.+\\.js$": "<rootDir>/node_modules/babel-jest" // -> add
+        },
+    ```
+
+  - 補記
+
+    ```sh
+    $ jest
+    FAIL  test/Counter.spec.js
+      ● Test suite failed to run
+
+        Cannot find module 'babel-core'
+    ```
+
+    になるので、対処
+
+    ```sh
+    $ docker-compose run --rm app yarn add --dev babel-core babel-core@bridge
+    ```
+
+    ```sh
+    $ docker-compose run --rm app yarn add --dev @babel/core @babel/preset-env
+    ```
+
+    DOMテスト用には、
+
+    ```sh
+    $ docker-compose run --rm app sh -c "yarn add --dev jsdom jsdom-global"
+
+## テスト実行
 
 ```sh
-$ docker-compose run --rm app yarn add --dev jest @vue/test-utils
-```
-
-`package.json`
-
-```json
-  "scripts": {
-    "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build",
-    "lint": "vue-cli-service lint",
-    "test": "jest" // <- add
-  },
-```
-
-2.
-
-```sh
-$ docker-compose run --rm app yarn add --dev vue-jest
-```
-
-`package.json`
-
-```json
-  ...
-  "readme": "ERROR: No README data found!",
-  // add ->
-  "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      ".*\\.(vue)$": "vue-jest"
-    },
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    }
-  }
-```
-
-3.
-
-```sh
-$ docker-compose run --rm app yarn add --dev babel-jest
-```
-
-`package.json`
-
-```json
-    "transform": {
-      ".*\\.(vue)$": "vue-jest",
-      "^.+\\.js$": "<rootDir>/node_modules/babel-jest" // -> add
-    },
+$ docker-compose exec app sh -c "yarn run test"
 ```
 
 ---
 
-# 補記
+# 補足
 
 ### ~~アプデ等で環境がおかしくなったら~~
 
@@ -218,6 +257,9 @@ $ docker-compose run --rm app yarn add --dev babel-jest
 - https://qiita.com/ryo2132/items/3d0379e85c38a9a5b355
 
 - https://qiita.com/fruitriin/items/3249bb24d60932bb42ee
+
+npmとyarnのコマンド早見表
+- https://qiita.com/rubytomato@github/items/1696530bb9fd59aa28d8
 
 #### テスト環境まわり
 
