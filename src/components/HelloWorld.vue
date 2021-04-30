@@ -1,6 +1,7 @@
 <template>
   <div class="hello">
     <div id="counter"></div>
+    <div id="axios-sample"></div>
 
     <h1>{{ msg }}</h1>
     <p>
