@@ -6,6 +6,7 @@
       <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
     </section>
     <section v-else>
+      <div v-if="loading">Loading...</div>
       <ul>
         <div
           v-for="item in items"
