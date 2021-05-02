@@ -1,7 +1,11 @@
 <template>
   <div>
     <h1>Bitcoin Price Index</h1>
-    <section>
+    <section v-if="errored">
+      <h1>Error</h1>
+      <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
+    </section>
+    <section v-else>
       <ul>
         <div
           v-for="item in items"
