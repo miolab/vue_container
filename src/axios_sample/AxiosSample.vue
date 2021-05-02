@@ -13,7 +13,7 @@
           </strong>
           <span class="lighten">
             <span v-html="item.symbol"></span>
-            {{ item.rate_float }}
+            {{ item.rate_float | currencyDecimal }}
           </span>
         </li>
       </div>
@@ -40,6 +40,11 @@ export default {
     axios
     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
     .then(response => (this.items = response.data.bpi))
+  },
+  filters: {
+    currencyDecimal(value) {
+      return value.toFixed(2)
+    }
   }
 }
 </script>
