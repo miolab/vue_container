@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="axios-sample">
     <h1>Bitcoin Price Index</h1>
     <section v-if="errored">
       <h1>Error</h1>
@@ -66,7 +66,7 @@ export default {
 </script>
 
 <style scoped>
-ul {
+#axios-sample ul {
   display: inline-block;
   text-align: left;
   margin-top: 0;
