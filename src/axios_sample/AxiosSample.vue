@@ -43,3 +43,11 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+ul {
+  display: inline-block;
+  text-align: left;
+  margin-top: 0;
+}
+</style>
