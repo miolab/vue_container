@@ -1,13 +1,23 @@
 <template>
   <div>
     <h1>Bitcoin Price Index</h1>
-    <div
-      v-for="item in items"
-      v-bind:key="item"
-      class="item"
-    >
-      {{ item.description }}
-    </div>
+    <ul>
+      <div
+        v-for="item in items"
+        v-bind:key="item"
+        class="item"
+      >
+        <li>
+          <strong>
+            {{ item.description }}
+          </strong>
+          <span class="lighten">
+            <span v-html="item.symbol"></span>
+            {{ item.rate_float }}
+          </span>
+        </li>
+      </div>
+    </ul>
     <hr>
     <div>
       <p><strong>raw data</strong></p>
