@@ -2,11 +2,11 @@
 
 [![miolab](https://circleci.com/gh/miolab/vue_container.svg?style=svg)](https://github.com/miolab/vue_container)
 
-__Vue.js__ (v2) のDocker開発環境リポジトリ
+**Vue.js** (v2) の Docker 開発環境リポジトリ
 
 <img width="600" alt="vue" src="https://user-images.githubusercontent.com/33124627/77903090-4463d480-72bd-11ea-86c6-c62023bfa3f0.png">
 
-* バージョン
+- バージョン
 
   ```sh
   $ docker-compose run --rm app yarn list vue
@@ -21,8 +21,8 @@ __Vue.js__ (v2) のDocker開発環境リポジトリ
 
 以下コード中、
 
-* `$ ... `はTerminalでの操作
-* `# ... `はDockerコンテナ内での操作
+- `$ ...`は Terminal での操作
+- `# ...`は Docker コンテナ内での操作
 
 を表す。
 
@@ -30,7 +30,7 @@ __Vue.js__ (v2) のDocker開発環境リポジトリ
 
 ## コンテナビルド
 
-* ビルド
+- ビルド
 
   ```sh
   $ git clone https://github.com/miolab/vue_container.git
@@ -40,7 +40,7 @@ __Vue.js__ (v2) のDocker開発環境リポジトリ
   $ docker-compose build
   ```
 
-* 起動
+- 起動
 
   ```sh
   $ docker-compose up -d
@@ -50,14 +50,14 @@ __Vue.js__ (v2) のDocker開発環境リポジトリ
   $ docker-compose exec app sh
   ```
 
-  * Vueが入ったか確認
+  - Vue が入ったか確認
 
     ```
     # vue --version
     @vue/cli 4.5.11
     ```
 
-## Vue開発環境構築（例）
+## Vue 開発環境構築（例）
 
 ```sh
 # vue create .
@@ -109,7 +109,7 @@ Done in 1.76s.
 
 ```
 
-* サーバー起動（サンプル表示） `yarn serve`
+- サーバー起動（サンプル表示） `yarn serve`
 
   ```sh
   $ docker-compose exec app yarn serve
@@ -121,9 +121,9 @@ Done in 1.76s.
 
 #### まとめて準備する場合
 
-  ```sh
-  $ docker-compose run --rm app sh -c "yarn add --dev jest @vue/test-utils vue-jest   babel-jest @babel-core @babel/preset-env babel-core@bridge jsdom jsdom-global"
-  ```
+```sh
+$ docker-compose run --rm app sh -c "yarn add --dev jest @vue/test-utils vue-jest   babel-jest @babel-core @babel/preset-env babel-core@bridge jsdom jsdom-global"
+```
 
 #### 個別で準備する場合
 
@@ -206,10 +206,11 @@ Done in 1.76s.
     $ docker-compose run --rm app yarn add --dev @babel/core @babel/preset-env
     ```
 
-    DOMテスト用には、
+    DOM テスト用には、
 
     ```sh
     $ docker-compose run --rm app sh -c "yarn add --dev jsdom jsdom-global"
+    ```
 
 ## テスト実行
 
@@ -223,10 +224,11 @@ $ docker-compose exec app sh -c "yarn run test"
 
 ### ~~アプデ等で環境がおかしくなったら~~
 
-* ~~`$ docker-compose run --rm app npm rebuild` 試す。~~
+- ~~`$ docker-compose run --rm app npm rebuild` 試す。~~
+
 ### 削除する場合
 
-* コンテナ停止は以下
+- コンテナ停止は以下
 
   ```
   # exit
@@ -236,7 +238,7 @@ $ docker-compose exec app sh -c "yarn run test"
   $ docker-compose stop
   ```
 
-* コンテナやイメージをまとめて全削除
+- コンテナやイメージをまとめて全削除
 
   ```
   $ docker-compose down --rmi all --volumes
@@ -245,6 +247,18 @@ $ docker-compose exec app sh -c "yarn run test"
 ---
 
 ## 参考
+
+## Vue Router
+
+https://router.vuejs.org/ja/installation.html#vue-cli
+
+インストール
+
+```sh
+$ docker-compose run --rm app yarn add vue-router
+```
+
+---
 
 #### 公式ガイド
 
@@ -258,39 +272,48 @@ $ docker-compose exec app sh -c "yarn run test"
 
 - https://qiita.com/fruitriin/items/3249bb24d60932bb42ee
 
-npmとyarnのコマンド早見表
+npm と yarn のコマンド早見表
+
 - https://qiita.com/rubytomato@github/items/1696530bb9fd59aa28d8
 
 #### テスト環境まわり
 
 公式
+
 - https://vue-test-utils.vuejs.org/ja/installation/#%E3%83%86%E3%82%B9%E3%83%88%E3%83%A9%E3%83%B3%E3%83%8A%E3%82%92%E9%81%B8%E3%81%B6
 
 その他
+
 - https://qiita.com/kskinaba/items/d23259060e6e13b7353c
 
 ---
+
 # app
 
 ## Project setup
+
 ```
 yarn install
 ```
 
 ### Compiles and hot-reloads for development
+
 ```
 yarn serve
 ```
 
 ### Compiles and minifies for production
+
 ```
 yarn build
 ```
 
 ### Lints and fixes files
+
 ```
 yarn lint
 ```
 
 ### Customize configuration
+
 See [Configuration Reference](https://cli.vuejs.org/config/).
