@@ -7,6 +7,7 @@
     <div>
       <p>例（v-on:click） {{ number }}</p>
       <button v-on:click="countUp">Count Up</button>
+      <button v-on:click="resetCount">Reset Count</button>
     </div>
   </div>
 </template>
@@ -26,6 +27,10 @@ export default {
     },
     countUp: function() {
       this.number += 1
+    },
+    resetCount: function() {
+      this.number = 0
+      this.count = 0
     }
   }
 }
