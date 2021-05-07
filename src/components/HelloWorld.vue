@@ -18,7 +18,8 @@
     </ul>
     <h3>Essential Links</h3>
     <ul>
-      <li><a href="https://vuejs.org" target="_blank" rel="noopener">Core Docs</a></li>
+      <!-- v-bind例（href, target, relのセットをオブジェクト化してv-bindで適用させる）-->
+      <li><a v-bind="urlVuejsOrg">Core Docs</a></li>
       <li><a href="https://forum.vuejs.org" target="_blank" rel="noopener">Forum</a></li>
       <li><a href="https://chat.vuejs.org" target="_blank" rel="noopener">Community Chat</a></li>
       <li><a href="https://twitter.com/vuejs" target="_blank" rel="noopener">Twitter</a></li>
@@ -43,9 +44,15 @@ export default {
   },
   data() {
     return {
+      // v-bind例
       urlCli: 'https://cli.vuejs.org',
       urlBabel: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
-      urlEslint: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint'
+      urlEslint: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint',
+      urlVuejsOrg: {
+        href: "https://vuejs.org",
+        target: "_blank",
+        rel: "noopener"
+      }
     }
   }
 }
