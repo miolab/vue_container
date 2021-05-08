@@ -6,8 +6,16 @@
     </div>
     <div>
       <p>例（v-on:click） {{ number }}</p>
-      <button v-on:click="countUp">Count Up</button>
-      <button v-on:click="resetCount">Reset Count</button>
+      <p><button v-on:click="countUp">Count Up</button></p>
+      <p>
+        <button
+          v-on:click="resetCount"
+          v-on:mouseover="showDescription"
+          v-on:mouseleave="removeDescription"
+        >
+          Reset Count<span v-if="isMouseover"> (hover test)</span>
+        </button>
+      </p>
     </div>
   </div>
 </template>
@@ -19,6 +27,7 @@ export default {
     return {
       count: 0,
       number: 0,
+      isMouseover: false,
     }
   },
   methods: {
@@ -31,6 +40,12 @@ export default {
     resetCount: function() {
       this.number = 0
       this.count = 0
+    },
+    showDescription() {
+      this.isMouseover = true
+    },
+    removeDescription() {
+      this.isMouseover = false
     }
   }
 }
