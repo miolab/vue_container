@@ -6,7 +6,10 @@
     </div>
     <div>
       <p>例（v-on:click） {{ number }}</p>
-      <p><button v-on:click="countUp">Count Up</button></p>
+      <p>
+        <button v-on:click="countUp(1)">Count Up (1n)</button>
+        <button v-on:click="countUp(2)">Count Up (2n)</button>
+      </p>
       <p>
         <button
           v-on:click="resetCount"
@@ -34,8 +37,8 @@ export default {
     increment() {
       this.count++
     },
-    countUp: function() {
-      this.number += 1
+    countUp: function(times) {
+      this.number += 1 * times
     },
     resetCount: function() {
       this.number = 0
