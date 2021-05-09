@@ -9,9 +9,9 @@ describe('init', () => {
 })
 
 describe('Counter.vue', () => {
+  const wrapper = shallowMount(Counter);
   it('increments count when button is clicked', async () => {
-    const wrapper = shallowMount(Counter);
-    await wrapper.find('button').trigger('click');
+    await wrapper.find('button.btn-increment').trigger('click');
 
     await expect(wrapper.find('div').text()).toMatch('1');
   })
