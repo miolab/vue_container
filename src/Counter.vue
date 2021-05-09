@@ -1,14 +1,28 @@
 <template>
   <div>
     <div>
-      <p>例（@click） {{ count }}</p>
-      <button @click="increment">oshitara-kazuga-fuemasu</button>
+      <p>例（@click）
+        <span class="count-int">{{ count }}</span>
+      </p>
+      <button class="btn-increment" @click="increment">
+        oshitara-kazuga-fuemasu
+      </button>
     </div>
     <div>
-      <p>例（v-on:click） {{ number }}</p>
-      <p><button v-on:click="countUp">Count Up</button></p>
+      <p>例（v-on:click）
+        <span class="number-int">{{ number }}</span>
+      </p>
+      <p>
+        <button class="btn-countup-single" v-on:click="countUp(1)">
+          Count Up (1n)
+        </button>
+        <button class="btn-countup-twice" v-on:click="countUp(2)">
+          Count Up (2n)
+        </button>
+      </p>
       <p>
         <button
+          class="btn-reset-count"
           v-on:click="resetCount"
           v-on:mouseover="showDescription"
           v-on:mouseleave="removeDescription"
@@ -34,8 +48,8 @@ export default {
     increment() {
       this.count++
     },
-    countUp: function() {
-      this.number += 1
+    countUp: function(times) {
+      this.number += 1 * times
     },
     resetCount: function() {
       this.number = 0
