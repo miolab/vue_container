@@ -1,6 +1,13 @@
 <template>
   <div id="forms">
-    <p>{{ message }}</p>
+    <input
+      class="input-text"
+      type="text"
+      v-model="message"
+    >
+    <p>入力結果:
+      <span class="show-input-text">{{ message }}</span>
+    </p>
   </div>
 </template>
 
@@ -9,30 +16,8 @@ export default {
   name: 'Forms',
   data() {
     return {
-      message: 'テストメッセージ'
-      // count: 0,
-      // number: 0,
-      // isMouseover: false,
+      message: ''
     }
   }
-  // },
-//   methods: {
-//     increment() {
-//       this.count++
-//     },
-//     countUp: function(times) {
-//       this.number += 1 * times
-//     },
-//     resetCount: function() {
-//       this.number = 0
-//       this.count = 0
-//     },
-//     showDescription() {
-//       this.isMouseover = true
-//     },
-//     removeDescription() {
-//       this.isMouseover = false
-//     }
-//   }
 }
 </script>
