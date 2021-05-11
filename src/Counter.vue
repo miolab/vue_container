@@ -3,6 +3,7 @@
     <div>
       <p>例（@click）
         <span class="count-int">{{ count }}</span>
+        <span class="flash-message-new">{{ flashMessageUpdate }}</span>
       </p>
       <p>
         {{ showOverNumOrLess }}
@@ -43,6 +44,7 @@ export default {
   data() {
     return {
       count: 0,
+      flashMessageUpdate: '',
       number: 0,
       isMouseover: false,
     }
@@ -50,6 +52,7 @@ export default {
   methods: {
     increment() {
       this.count++
+      this.flashMessageUpdate = ' update!';
     },
     countUp: function(times) {
       this.number += 1 * times
@@ -72,6 +75,20 @@ export default {
         String(num) + 'より大きい':
         String(num) + 'より小さい'
     }
+  },
+  watch: {
+    count: function() {
+      setTimeout(() => {
+        this.flashMessageUpdate = ''
+      }, 2000)
+    }
   }
 }
 </script>
+
+<style scoped>
+.flash-message-new {
+  color: red;
+  font-weight: bold;
+}
+</style>
