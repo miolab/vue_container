@@ -4,6 +4,9 @@
       <p>例（@click）
         <span class="count-int">{{ count }}</span>
       </p>
+      <p>
+        {{ showOverNumOrLess }}
+      </p>
       <button class="btn-increment" @click="increment">
         oshitara-kazuga-fuemasu
       </button>
@@ -60,6 +63,14 @@ export default {
     },
     removeDescription() {
       this.isMouseover = false
+    }
+  },
+  computed: {
+    showOverNumOrLess: function() {
+      const num = 3;
+      return this.count > num ?
+        String(num) + 'より大きい':
+        String(num) + 'より小さい'
     }
   }
 }
