@@ -3,6 +3,10 @@
     <div>
       <p>例（@click）
         <span class="count-int">{{ count }}</span>
+        <span class="flash-message-new">{{ flashMessageUpdate }}</span>
+      </p>
+      <p :class="fontOrangeStraight">
+        {{ showOverNumOrLess }}
       </p>
       <button class="btn-increment" @click="increment">
         oshitara-kazuga-fuemasu
@@ -40,20 +44,25 @@ export default {
   data() {
     return {
       count: 0,
+      flashMessageUpdate: '',
       number: 0,
+      isActiveFontOrangeStraight: false,
       isMouseover: false,
     }
   },
   methods: {
     increment() {
       this.count++
+      this.isActiveFontOrangeStraight = true;
+      this.flashMessageUpdate = ' update!';
     },
     countUp: function(times) {
       this.number += 1 * times
     },
-    resetCount: function() {
-      this.number = 0
-      this.count = 0
+    resetCount: async function() {
+      this.number = 0;
+      this.count = 0;
+      this.isActiveFontOrangeStraight = false;
     },
     showDescription() {
       this.isMouseover = true
@@ -61,6 +70,40 @@ export default {
     removeDescription() {
       this.isMouseover = false
     }
+  },
+  computed: {
+    showOverNumOrLess: function() {
+      const num = 3;
+      return this.count > num ?
+        String(num) + 'より大きい':
+        String(num) + 'より小さい'
+    },
+    fontOrangeStraight: function() {
+      return {
+        'font-orange': this.isActiveFontOrangeStraight,
+        'font-straight': !this.isActiveFontOrangeStraight
+      }
+    }
+  },
+  watch: {
+    count: function() {
+      setTimeout(() => {
+        this.flashMessageUpdate = ''
+      }, 2000)
+    }
   }
 }
 </script>
+
+<style scoped>
+.flash-message-new {
+  color: red;
+  font-weight: bold;
+}
+.font-orange {
+  color: orange;
+}
+.font-straight {
+  font-style: italic;
+}
+</style>
