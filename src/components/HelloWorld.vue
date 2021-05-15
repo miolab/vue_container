@@ -9,12 +9,15 @@
       check out the
       <!-- v-bind例 -->
       <a v-bind:href="urlCli" target="_blank" rel="noopener">vue-cli documentation</a>.
+      <!-- NOTE: :href="urlCli" のように、`v-bind`は省略も可 -->
     </p>
     <h3>Installed CLI Plugins</h3>
     <ul>
-      <!-- v-bind例（`v-bind`は省略可）-->
-      <li><a :href="urlBabel" target="_blank" rel="noopener">babel</a></li>
-      <li><a :href="urlEslint" target="_blank" rel="noopener">eslint</a></li>
+      <template v-for="(val, index) in urlsCliPlugins">
+        <li :key="index">
+          <a :href="val.href" target="_blank" rel="noopener">{{ val.serviceName }}</a>
+        </li>
+      </template>
     </ul>
     <h3>Essential Links</h3>
     <ul>
@@ -42,6 +45,16 @@ export default {
   },
   data() {
     return {
+      urlsCliPlugins: [
+        {
+          serviceName: "babel",
+          href: "https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel"
+        },
+        {
+          serviceName: "eslint",
+          href: "https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint"
+        }
+      ],
       urlsEcosystem: [
         {serviceName: "vue-router", href: "https://router.vuejs.org"},
         {serviceName: "vuex", href: "https://vuex.vuejs.org"},
@@ -54,8 +67,6 @@ export default {
       ],
       // v-bind例
       urlCli: 'https://cli.vuejs.org',
-      urlBabel: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
-      urlEslint: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-eslint',
       urlVuejsOrg: {
         href: "https://vuejs.org",
         target: "_blank",
