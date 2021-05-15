@@ -32,10 +32,10 @@
         >
           raw dataの表示非/表示を切り替える
         </button>
-        <template v-if="isShown">
+        <div v-show="isShown">
             <p><strong>raw data</strong></p>
             {{ items }}
-        </template>
+        </div>
         <hr>
       </div>
     </section>
