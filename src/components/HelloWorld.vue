@@ -14,8 +14,8 @@
     <h3>Installed CLI Plugins</h3>
     <ul>
       <template v-for="(val, index) in urlsCliPlugins">
-        <li :key="index">
-          <a :href="val.href" target="_blank" rel="noopener">{{ val.serviceName }}</a>
+        <li :key="val">
+          {{ index + 1 }}. <a :href="val.href" target="_blank" rel="noopener">{{ val.serviceName }}</a>
         </li>
       </template>
     </ul>
@@ -30,7 +30,7 @@
     </ul>
     <h3>Ecosystem</h3>
     <ul>
-      <li v-for="(val, index) in urlsEcosystem" :key="index">
+      <li v-for="val in urlsEcosystem" :key="val">
         <a :href="val.href" target="_blank" rel="noopener">{{ val.serviceName }}</a>
       </li>
     </ul>
