@@ -27,11 +27,9 @@
     </ul>
     <h3>Ecosystem</h3>
     <ul>
-      <li><a href="https://router.vuejs.org" target="_blank" rel="noopener">vue-router</a></li>
-      <li><a href="https://vuex.vuejs.org" target="_blank" rel="noopener">vuex</a></li>
-      <li><a href="https://github.com/vuejs/vue-devtools#vue-devtools" target="_blank" rel="noopener">vue-devtools</a></li>
-      <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
-      <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
+      <li v-for="(val, index) in urlsEcosystem" :key="index">
+        <a :href="val.href" target="_blank" rel="noopener">{{ val.serviceName }}</a>
+      </li>
     </ul>
   </div>
 </template>
@@ -44,6 +42,16 @@ export default {
   },
   data() {
     return {
+      urlsEcosystem: [
+        {serviceName: "vue-router", href: "https://router.vuejs.org"},
+        {serviceName: "vuex", href: "https://vuex.vuejs.org"},
+        {
+          serviceName: "vue-devtools",
+          href: "https://github.com/vuejs/vue-devtools#vue-devtools"
+        },
+        {serviceName: "vue-loader", href: "https://vue-loader.vuejs.org"},
+        {serviceName: "awesome-vue", href: "https://github.com/vuejs/awesome-vue"}
+      ],
       // v-bind例
       urlCli: 'https://cli.vuejs.org',
       urlBabel: 'https://github.com/vuejs/vue-cli/tree/dev/packages/%40vue/cli-plugin-babel',
