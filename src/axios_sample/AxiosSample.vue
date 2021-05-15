@@ -1,5 +1,6 @@
 <template>
   <div id="axios-sample">
+    <hr>
     <h1>Bitcoin Price Index</h1>
     <section v-if="errored">
       <h1>Error</h1>
@@ -24,10 +25,18 @@
           </li>
         </div>
       </ul>
-      <hr>
       <div>
-        <p><strong>raw data</strong></p>
-        {{ items }}
+        <button
+          v-on:click="switchIsShown"
+          class="btn-switch-msg"
+        >
+          raw dataの表示非/表示を切り替える
+        </button>
+        <template v-if="isShown">
+            <p><strong>raw data</strong></p>
+            {{ items }}
+        </template>
+        <hr>
       </div>
     </section>
   </div>
@@ -40,6 +49,7 @@ export default {
   name: 'AxiosSample',
   data() {
     return {
+      isShown: true,
       items: null,
       loading: true,
       errored: false
@@ -61,6 +71,11 @@ export default {
     currencyDecimal(value) {
       return value.toFixed(2)
     }
+  },
+  methods: {
+    switchIsShown: function() {
+      this.isShown = !this.isShown;
+    }
   }
 }
 </script>
@@ -70,5 +85,8 @@ export default {
   display: inline-block;
   text-align: left;
   margin-top: 0;
+}
+.btn-switch-msg {
+  color: blue;
 }
 </style>
