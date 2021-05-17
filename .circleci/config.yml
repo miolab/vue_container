@@ -31,6 +31,11 @@ jobs:
             docker ps -f status=running
             docker-compose logs
       - run:
+          name: Check Lints
+          command: |
+            set -x
+            docker-compose exec app sh -c "yarn lint --no-fix"
+      - run:
           name: Run Tests
           command: |
             set -x

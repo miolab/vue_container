@@ -314,6 +314,24 @@ yarn build
 yarn lint
 ```
 
+- options
+
+  ```
+  $ docker-compose exec app yarn lint -h
+  yarn run v1.22.5
+  $ vue-cli-service lint -h
+
+    Usage: vue-cli-service lint [options] [...files]
+
+    Options:
+
+      --format [formatter]   specify formatter (default: codeframe)
+      --no-fix               do not fix errors or warnings
+      --no-fix-warnings      fix errors, but do not fix warnings
+      --max-errors [limit]   specify number of errors to make build failed (default: 0)
+      --max-warnings [limit] specify number of warnings to make build failed (default: Infinity)
+  ```
+
 ### Customize configuration
 
 See [Configuration Reference](https://cli.vuejs.org/config/).
