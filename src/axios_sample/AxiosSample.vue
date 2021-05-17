@@ -1,7 +1,6 @@
 <template>
   <div id="axios-sample">
-    <hr>
-    <h1>Bitcoin Price Index</h1>
+    <AxiosSampleHeader></AxiosSampleHeader>
     <section v-if="errored">
       <h1>Error</h1>
       <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
@@ -44,9 +43,13 @@
 
 <script>
 import axios from 'axios'
+import AxiosSampleHeader from './AxiosSampleHeader.vue'
 
 export default {
   name: 'AxiosSample',
+  components: {
+    AxiosSampleHeader
+  },
   data() {
     return {
       isShown: true,

@@ -3,6 +3,7 @@
     <Forms></Forms>
     <hr>
     <div id="counter"></div>
+    <hr>
     <div id="axios-sample"></div>
 
     <h1>{{ msg }}</h1>
