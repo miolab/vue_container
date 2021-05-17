@@ -6,6 +6,8 @@ import Forms from './components/Forms.vue'
 
 Vue.config.productionTip = false
 
+Vue.component('Forms', Forms);
+
 new Vue({
   render: h => h(App),
 }).$mount('#app')
@@ -18,7 +20,3 @@ new Vue({
 new Vue({
   render: h => h(AxiosSample),
 }).$mount('#axios-sample')
-
-new Vue({
-  render: h => h(Forms),
-}).$mount('#forms')

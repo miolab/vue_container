@@ -1,5 +1,7 @@
 <template>
   <div class="hello">
+    <Forms></Forms>
+    <hr>
     <div id="counter"></div>
     <div id="axios-sample"></div>
 
