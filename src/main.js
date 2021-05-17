@@ -11,8 +11,9 @@ new Vue({
 }).$mount('#app')
 
 new Vue({
+  el: '#counter',
   render: h => h(Counter),
-}).$mount('#counter')
+})
 
 new Vue({
   render: h => h(AxiosSample),
