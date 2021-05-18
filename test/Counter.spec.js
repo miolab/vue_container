@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils'
-import Counter from '../src/Counter.vue'
+import Counter from '../src/components/Counter.vue'
 
 describe('init', () => {
   it('test greet', () => {

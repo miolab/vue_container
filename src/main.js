@@ -1,10 +1,12 @@
 import Vue from 'vue'
 import App from './App.vue'
-import Counter from './Counter.vue'
-import AxiosSample from './axios_sample/AxiosSample.vue'
+import Counter from './components/Counter.vue'
+import AxiosSample from './components/axios_sample/AxiosSample.vue'
 import Forms from './components/Forms.vue'
 
 Vue.config.productionTip = false
+
+Vue.component('Forms', Forms);
 
 new Vue({
   render: h => h(App),
@@ -18,7 +20,3 @@ new Vue({
 new Vue({
   render: h => h(AxiosSample),
 }).$mount('#axios-sample')
-
-new Vue({
-  render: h => h(Forms),
-}).$mount('#forms')
