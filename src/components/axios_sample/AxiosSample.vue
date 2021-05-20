@@ -1,6 +1,6 @@
 <template>
   <div id="axios-sample">
-    <AxiosSampleHeader></AxiosSampleHeader>
+    <AxiosSampleHeader :header-description="descriptionOfBitcoinSection"></AxiosSampleHeader>
     <section v-if="errored">
       <h1>Error</h1>
       <p>We're sorry, we're not able to retrieve this information at the moment, please try back later</p>
@@ -53,6 +53,7 @@ export default {
   data() {
     return {
       bitcoinItems: null,
+      descriptionOfBitcoinSection: 'Bitcoin price情報を表示します',
       isShown: true,
       loading: true,
       errored: false
