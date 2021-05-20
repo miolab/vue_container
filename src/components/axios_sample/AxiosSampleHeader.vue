@@ -7,8 +7,8 @@
 
 <script>
 export default {
-  props: [
-    'headerDescription'
-  ]
+  props: {
+    headerDescription: String
+  }
 }
 </script>
