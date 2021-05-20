@@ -9,7 +9,7 @@
       <div v-if="loading">Loading...</div>
       <ul>
         <div
-          v-for="item in items"
+          v-for="item in bitcoinItems"
           v-bind:key="item"
           class="item"
         >
@@ -33,7 +33,7 @@
         </button>
         <div v-show="isShown">
             <p><strong>raw data</strong></p>
-            {{ items }}
+            {{ bitcoinItems }}
         </div>
         <hr>
       </div>
@@ -52,8 +52,8 @@ export default {
   },
   data() {
     return {
+      bitcoinItems: null,
       isShown: true,
-      items: null,
       loading: true,
       errored: false
     }
@@ -61,7 +61,7 @@ export default {
   mounted() {
     axios
     .get('https://api.coindesk.com/v1/bpi/currentprice.json')
-    .then(response => {this.items = response.data.bpi})
+    .then(response => {this.bitcoinItems = response.data.bpi})
     .catch(error => {
       console.log(error)
       this.errored = true
