@@ -1,7 +1,10 @@
 <template>
   <section>
     <h1>Bitcoin Price Index</h1>
-    <p>{{ headerDescription }}</p>
+    <p>
+      {{ headerDescription }}
+      <span style="font-size: 0.8em;">（←{{ textLength }}文字）</span>
+    </p>
   </section>
 </template>
 
@@ -9,6 +12,11 @@
 export default {
   props: {
     headerDescription: String
+  },
+  computed: {
+    textLength() {
+      return this.headerDescription.length;
+    }
   }
 }
 </script>
