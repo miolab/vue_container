@@ -35,12 +35,22 @@
         </button>
       </p>
     </div>
+    <CounterFooter
+      :twice-incremented-number="numberIncrementedTwice"
+      @click-increment-twice="incrementNumberTwice"
+    >
+    </CounterFooter>
   </div>
 </template>
 
 <script>
+import CounterFooter from './CounterFooter.vue'
+
 export default {
   name: 'Counter',
+  components: {
+    CounterFooter
+  },
   data() {
     return {
       count: 0,
@@ -48,6 +58,7 @@ export default {
       number: 0,
       isActiveFontOrangeStraight: false,
       isMouseover: false,
+      numberIncrementedTwice: 0
     }
   },
   methods: {
@@ -69,6 +80,9 @@ export default {
     },
     removeDescription() {
       this.isMouseover = false
+    },
+    incrementNumberTwice(value) {
+      this.numberIncrementedTwice = value;
     }
   },
   computed: {
