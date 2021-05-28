@@ -12,7 +12,7 @@
     <p>バリデーション付きフォーム（v-model.Lazy）</p>
     <input
       type="text"
-      v-model.lazy="messageByLazy"
+      v-model.trim.lazy="messageByLazy"
     >
     <span>（{{ maxTextLimit }}文字以内）</span>
     <p>入力結果:
