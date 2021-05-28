@@ -34,8 +34,8 @@ export default {
   },
   computed: {
     messageLimitAlert() {
-      return this.messageByLazy.length >= this.maxTextLimit ?
-        String(this.maxTextLimit) + '文字未満にしてください' :
+      return this.messageByLazy.length > this.maxTextLimit ?
+        String(this.maxTextLimit) + '文字以内にしてください' :
         ''
     }
   }
