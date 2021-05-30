@@ -19,6 +19,15 @@
       <span class="show-input-text">{{ messageByLazy }}</span>
       <span style="color: red;"> {{ messageLimitAlert }}</span>
     </p>
+    <section class="single-checkbox">
+      <input
+        type="checkbox"
+        id="single-checkbox-input"
+        v-model="checkboxEventData.isChecked"
+      >
+      <label for="single-checkbox-input"> チェックする（単体チェックボックス）</label>
+      <p>{{ checkboxEventData.isChecked }}</p>
+    </section>
   </div>
 </template>
 
@@ -29,7 +38,10 @@ export default {
     return {
       message: '',
       messageByLazy: '',
-      maxTextLimit: 8
+      maxTextLimit: 8,
+      checkboxEventData: {
+        isChecked: false
+      }
     }
   },
   computed: {

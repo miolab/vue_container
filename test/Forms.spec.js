@@ -14,4 +14,13 @@ describe('Forms.vue', () => {
     await inputTextForm.setValue('テストメッセージ');
     await expect(spanShownText.text()).toMatch('テストメッセージ');
   })
+
+  it('単体checkboxにチェックを入れるとメッセージが変化する', async () => {
+    const singleCheckbox = wrapper.find('input#single-checkbox-input');
+    const singleCheckboxText = wrapper.find('section.single-checkbox p');
+    await expect(singleCheckboxText.text()).toMatch('false');
+
+    await singleCheckbox.setChecked(true);
+    await expect(singleCheckboxText.text()).toMatch('true');
+  })
 })
