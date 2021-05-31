@@ -19,6 +19,42 @@
       <span class="show-input-text">{{ messageByLazy }}</span>
       <span style="color: red;"> {{ messageLimitAlert }}</span>
     </p>
+    <section class="single-checkbox">
+      <input
+        type="checkbox"
+        id="single-checkbox-input"
+        v-model="checkboxEventData.isChecked"
+      >
+      <label for="single-checkbox-input"> チェックする（単体チェックボックス）</label>
+      <p>{{ checkboxEventData.isChecked }}</p>
+    </section>
+    <section class="multiple-checkbox">
+      <p>
+        （複数チェックボックス）
+        <input
+          type="checkbox"
+          id="checkbox-soccer"
+          value="soccer"
+          v-model="checkboxEventData.favboriteSports"
+        >
+        <label for="checkbox-soccer">サッカー</label>
+        <input
+          type="checkbox"
+          id="checkbox-running"
+          value="running"
+          v-model="checkboxEventData.favboriteSports"
+        >
+        <label for="checkbox-running">ランニング</label>
+        <input
+          type="checkbox"
+          id="checkbox-swimming"
+          value="swimming"
+          v-model="checkboxEventData.favboriteSports"
+        >
+        <label for="checkbox-swimming">水泳</label>
+      </p>
+      <p class="favorite-sports-result">{{ checkboxEventData.favboriteSports }}</p>
+    </section>
   </div>
 </template>
 
@@ -29,7 +65,11 @@ export default {
     return {
       message: '',
       messageByLazy: '',
-      maxTextLimit: 8
+      maxTextLimit: 8,
+      checkboxEventData: {
+        isChecked: false,
+        favboriteSports: []
+      }
     }
   },
   computed: {
