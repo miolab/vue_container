@@ -23,4 +23,16 @@ describe('Forms.vue', () => {
     await singleCheckbox.setChecked(true);
     await expect(singleCheckboxText.text()).toMatch('true');
   })
+
+  it('radioボタンを選択するとメッセージが変化する', async () => {
+    const radioButtonNotAllow = wrapper.find('input#not-allow');
+    const radioButtonAllow = wrapper.find('input#allow');
+    const radioButtonText = wrapper.find('section.input-radio p');
+
+    await radioButtonNotAllow.setChecked(true);
+    await expect(radioButtonText.text()).toMatch('not_allow');
+
+    await radioButtonAllow.setChecked(true);
+    await expect(radioButtonText.text()).toMatch('allow');
+  })
 })

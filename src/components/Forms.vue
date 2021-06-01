@@ -23,10 +23,10 @@
       <input
         type="checkbox"
         id="single-checkbox-input"
-        v-model="checkboxEventData.isChecked"
+        v-model="inputEventData.isChecked"
       >
       <label for="single-checkbox-input"> チェックする（単体チェックボックス）</label>
-      <p>{{ checkboxEventData.isChecked }}</p>
+      <p>{{ inputEventData.isChecked }}</p>
     </section>
     <section class="multiple-checkbox">
       <p>
@@ -35,25 +35,42 @@
           type="checkbox"
           id="checkbox-soccer"
           value="soccer"
-          v-model="checkboxEventData.favboriteSports"
+          v-model="inputEventData.favboriteSports"
         >
         <label for="checkbox-soccer">サッカー</label>
         <input
           type="checkbox"
           id="checkbox-running"
           value="running"
-          v-model="checkboxEventData.favboriteSports"
+          v-model="inputEventData.favboriteSports"
         >
         <label for="checkbox-running">ランニング</label>
         <input
           type="checkbox"
           id="checkbox-swimming"
           value="swimming"
-          v-model="checkboxEventData.favboriteSports"
+          v-model="inputEventData.favboriteSports"
         >
         <label for="checkbox-swimming">水泳</label>
       </p>
-      <p class="favorite-sports-result">{{ checkboxEventData.favboriteSports }}</p>
+      <p class="favorite-sports-result">{{ inputEventData.favboriteSports }}</p>
+    </section>
+    <section class="input-radio">
+      <input
+        type="radio"
+        id="not-allow"
+        value="not_allow"
+        v-model="inputEventData.allowOrNot"
+      >
+      <label for="not-allow">許可しない</label>
+      <input
+        type="radio"
+        id="allow"
+        value="allow"
+        v-model="inputEventData.allowOrNot"
+      >
+      <label for="allow">許可する</label>
+      <p>{{ inputEventData.allowOrNot }}</p>
     </section>
   </div>
 </template>
@@ -66,9 +83,10 @@ export default {
       message: '',
       messageByLazy: '',
       maxTextLimit: 8,
-      checkboxEventData: {
+      inputEventData: {
         isChecked: false,
-        favboriteSports: []
+        favboriteSports: [],
+        allowOrNot: '（ラジオボックスが未選択です）'
       }
     }
   },
