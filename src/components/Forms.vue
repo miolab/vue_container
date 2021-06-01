@@ -23,10 +23,10 @@
       <input
         type="checkbox"
         id="single-checkbox-input"
-        v-model="checkboxEventData.isChecked"
+        v-model="inputEventData.isChecked"
       >
       <label for="single-checkbox-input"> チェックする（単体チェックボックス）</label>
-      <p>{{ checkboxEventData.isChecked }}</p>
+      <p>{{ inputEventData.isChecked }}</p>
     </section>
     <section class="multiple-checkbox">
       <p>
@@ -35,25 +35,25 @@
           type="checkbox"
           id="checkbox-soccer"
           value="soccer"
-          v-model="checkboxEventData.favboriteSports"
+          v-model="inputEventData.favboriteSports"
         >
         <label for="checkbox-soccer">サッカー</label>
         <input
           type="checkbox"
           id="checkbox-running"
           value="running"
-          v-model="checkboxEventData.favboriteSports"
+          v-model="inputEventData.favboriteSports"
         >
         <label for="checkbox-running">ランニング</label>
         <input
           type="checkbox"
           id="checkbox-swimming"
           value="swimming"
-          v-model="checkboxEventData.favboriteSports"
+          v-model="inputEventData.favboriteSports"
         >
         <label for="checkbox-swimming">水泳</label>
       </p>
-      <p class="favorite-sports-result">{{ checkboxEventData.favboriteSports }}</p>
+      <p class="favorite-sports-result">{{ inputEventData.favboriteSports }}</p>
     </section>
   </div>
 </template>
@@ -66,7 +66,7 @@ export default {
       message: '',
       messageByLazy: '',
       maxTextLimit: 8,
-      checkboxEventData: {
+      inputEventData: {
         isChecked: false,
         favboriteSports: []
       }
