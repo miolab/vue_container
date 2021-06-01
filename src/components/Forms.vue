@@ -55,6 +55,23 @@
       </p>
       <p class="favorite-sports-result">{{ inputEventData.favboriteSports }}</p>
     </section>
+    <section class="input-radio">
+      <input
+        type="radio"
+        id="not-allow"
+        value="not_allow"
+        v-model="inputEventData.allowOrNot"
+      >
+      <label for="not-allow">許可しない</label>
+      <input
+        type="radio"
+        id="allow"
+        value="allow"
+        v-model="inputEventData.allowOrNot"
+      >
+      <label for="allow">許可する</label>
+      <p>{{ inputEventData.allowOrNot }}</p>
+    </section>
   </div>
 </template>
 
@@ -68,7 +85,8 @@ export default {
       maxTextLimit: 8,
       inputEventData: {
         isChecked: false,
-        favboriteSports: []
+        favboriteSports: [],
+        allowOrNot: '（ラジオボックスが未選択です）'
       }
     }
   },
