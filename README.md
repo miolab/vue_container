@@ -123,6 +123,12 @@ Done in 1.76s.
 $ docker-compose exec app sh -c "yarn run test"
 ```
 
+- **テスト自動化**
+
+  ```sh
+  $ docker-compose exec app sh -c "yarn run test -watchAll"
+  ```
+
 ## lint 修正
 
 ```sh

@@ -72,6 +72,17 @@
       <label for="allow">許可する</label>
       <p>{{ inputEventData.allowOrNot }}</p>
     </section>
+    <section class="input-select">
+      <select v-model="inputEventData.favoriteMusicGenre">
+        <option
+          v-for="musicGenre in musicGenres"
+          :key="musicGenre"
+        >
+          {{ musicGenre }}
+        </option>
+      </select>
+      <p>{{ inputEventData.favoriteMusicGenre }}</p>
+    </section>
   </div>
 </template>
 
@@ -83,10 +94,12 @@ export default {
       message: '',
       messageByLazy: '',
       maxTextLimit: 8,
+      musicGenres: ['EDM', 'Rock', 'ポップ', 'アニメ'],
       inputEventData: {
         isChecked: false,
         favboriteSports: [],
-        allowOrNot: '（ラジオボックスが未選択です）'
+        allowOrNot: '（ラジオボックスが未選択です）',
+        favoriteMusicGenre: '（未選択）'
       }
     }
   },
