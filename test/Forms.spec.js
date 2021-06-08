@@ -35,4 +35,12 @@ describe('Forms.vue', () => {
     await radioButtonAllow.setChecked(true);
     await expect(radioButtonText.text()).toMatch('allow');
   })
+
+  it('セレクトボックスで選択したアイテムの内容へメッセージ置き換わる', async () => {
+    const inputSelectOptions = wrapper.find('select').findAll('option');
+    const textSelectedItem = wrapper.find('section.input-select p');
+
+    await inputSelectOptions.at(0).setSelected();
+    await expect(textSelectedItem.text()).toMatch('EDM');
+  })
 })
