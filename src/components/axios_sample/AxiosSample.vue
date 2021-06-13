@@ -32,7 +32,9 @@
           raw dataの表示非/表示を切り替える
         </button>
         <div v-show="isShown">
-            <p><strong>raw data</strong></p>
+            <p>
+              <strong>{{ headlineRawData | myFilterLowerCase }}</strong>
+            </p>
             {{ bitcoinItems }}
         </div>
         <hr>
@@ -53,6 +55,7 @@ export default {
   data() {
     return {
       bitcoinItems: null,
+      headlineRawData: 'Raw Data',
       descriptionOfBitcoinSection: 'Bitcoin price情報を表示します',
       isShown: true,
       loading: true,
@@ -72,6 +75,9 @@ export default {
     })
   },
   filters: {
+    myFilterLowerCase(value) {
+      return value.toLowerCase();
+    },
     currencyDecimal(value) {
       return value.toFixed(2)
     }
