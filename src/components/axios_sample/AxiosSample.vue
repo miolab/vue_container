@@ -32,10 +32,16 @@
           raw dataの表示非/表示を切り替える
         </button>
         <div v-show="isShown">
-            <p>
-              <strong>{{ headlineRawData | myFilterLowerCase }}</strong>
-            </p>
+          <p>
+            <strong>{{
+              headlineRawData
+              | myFilterTextReplace
+              | myFilterLowerCase
+            }}</strong>
+          </p>
+          <p>
             {{ bitcoinItems }}
+          </p>
         </div>
         <hr>
       </div>
@@ -75,6 +81,9 @@ export default {
     })
   },
   filters: {
+    myFilterTextReplace(value) {
+      return value.replace('Data', 'Data All');
+    },
     myFilterLowerCase(value) {
       return value.toLowerCase();
     },
